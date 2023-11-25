@@ -71,7 +71,9 @@ Operator Framework is a solution to this problem along with providing several be
 Operator Framework is comprised of a few different parts including, 
 
 Operator Framework SDK : The framework used to build and package Operators. Using Operator SDK allows developers to easily automate and manage any Operators they create.
-Operator Lifecycle Manager (OLM) : Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. OPerator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub.
+
+Operator Lifecycle Manager (OLM) : Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. Operator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub.
+
 Operator Hub : A community-driven public hub for sharing and discovering Operators for various uses.
 
 These components make up Operator Framework and make it very useful for developing, deploying and managing Operators.
