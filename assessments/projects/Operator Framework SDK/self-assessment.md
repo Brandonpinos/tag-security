@@ -88,22 +88,22 @@ Creating an Operator using Operator Framework SDK:
 5. Use the SDK Command Line Interface to generate the operator deployment manifests
 
 Installing and Managing an Operator using Operator Framework Operator Lifecycle Manage (OLM):
-1a. Use Operator OLM to manually create Operator
+1. Use Operator OLM to manually create Operator
   OR
-1b. Use Catalog Operator to create Operator from OperaterHub
+1. Use Catalog Operator to create Operator from OperaterHub
 
 Operator OLM
-2a. Watches for the ClusterServiceVersion (CSV) in a namspace and checks to make sure the requirements are met
-3a. If requirements are met, the install strategy is ran
+1. Watches for the ClusterServiceVersion (CSV) in a namspace and checks to make sure the requirements are met
+2. If requirements are met, the install strategy is ran
 
 Catalog Operator
-2b. Holds a cache of CSVs and CRDs.
-3b. Watches for InstallPlans set by user
-4b. If one is found, finds the matching name and adds as a resource, else 7b
-5b. For each managed CRD, adds as a resolved resource
-6b. For each resolved CRD, finds the managing CSV
-7b. Watches for resolved InstallPlans and creates resources for them
-8b. Watches for subscriptions to Operators in Catalog, and creates InstallPlans for them
+1. Holds a cache of CSVs and CRDs.
+2. Watches for InstallPlans set by user
+3. If one is found, finds the matching name and adds as a resource, else 7b
+4. For each managed CRD, adds as a resolved resource
+5. For each resolved CRD, finds the managing CSV
+6. Watches for resolved InstallPlans and creates resources for them
+7. Watches for subscriptions to Operators in Catalog, and creates InstallPlans for them
 
 ### Goals
 The goals of Operator Framework are mainly to simplify and enhance applications  on Kubernetes clusters. 
