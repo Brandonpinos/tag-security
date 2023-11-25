@@ -71,23 +71,37 @@ Operator Framework is a solution to this problem along with providing several be
 Operator Framework is comprised of a few different parts including, 
 
 Operator Framework SDK : The framework used to build and package Operators. Using Operator SDK allows developers to easily automate and manage any Operators they create.
-Operator Lifecycle Manager (OLM) : Provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators
+Operator Lifecycle Manager (OLM) : Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. OPerator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub.
 Operator Hub : A community-driven public hub for sharing and discovering Operators for various uses.
 
 These components make up Operator Framework and make it very useful for developing, deploying and managing Operators.
 
 
 ### Actions
-These are the steps that a project performs in order to provide some service
-or functionality.  These steps are performed by different actors in the system.
-Note, that an action need not be overly descriptive at the function call level.  
-It is sufficient to focus on the security checks performed, use of sensitive 
-data, and interactions between actors to perform an action.  
+Creating an Operator using Operator Framework SDK:
+1. Create new project operator using the SDK Command Line Interface
+2. Define resource APis by adding Custom Resource Definitions
+3. Define controllers
+4. Write reconciling logic for controllers using SDK and APIs
+5. Use the SDK Command Line Interface to generate the operator deployment manifests
 
-For example, the access server receives the client request, checks the format, 
-validates that the request corresponds to a file the client is authorized to 
-access, and then returns a token to the client.  The client then transmits that 
-token to the file server, which, after confirming its validity, returns the file.
+Installing and Managing an Operator using Operator Framework Operator Lifecycle Manage (OLM):
+1a. Use Operator OLM to manually create Operator
+  OR
+1b. Use Catalog Operator to create Operator from OperaterHub
+
+Operator OLM
+2a. Watches for the ClusterServiceVersion (CSV) in a namspace and checks to make sure the requirements are met
+3a. If requirements are met, the install strategy is ran
+
+Catalog Operator
+2b. Holds a cache of CSVs and CRDs.
+3b. Watches for InstallPlans set by user
+4b. If one is found, finds the matching name and adds as a resource, else 7b
+5b. For each managed CRD, adds as a resolved resource
+6b. For each resolved CRD, finds the managing CSV
+7b. Watches for resolved InstallPlans and creates resources for them
+8b. Watches for subscriptions to Operators in Catalog, and creates InstallPlans for them
 
 ### Goals
 The goals of Operator Framework are mainly to simplify and enhance applications  on Kubernetes clusters. 
