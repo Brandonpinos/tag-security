@@ -229,18 +229,6 @@ Following a release, there is a [grooming meeting](https://github.com/operator-f
 The specific details about the timings of the meetings and communication channels are available [here](https://github.com/operator-framework/community#operator-sdk-working-group).
 
 
-## Security issue resolution
-
-* Responsible Disclosures Process. A outline of the project's responsible
-  disclosures process should suspected security issues, incidents, or
-vulnerabilities be discovered both external and internal to the project. The
-outline should discuss communication methods/strategies.
-  * Vulnerability Response Process. Who is responsible for responding to a
-    report. What is the reporting process? How would you respond?
-* Incident Response. A description of the defined procedures for triage,
-  confirmation, notification of vulnerability or security incident, and
-patching/update availability.
-
 ## Appendix
 
 * Known Issues Over Time. List or summarize statistics of past vulnerabilities
