@@ -167,8 +167,7 @@ Data Encryption and Masking: Implementing encryption and masking techniques for 
 
 ## Project compliance
 
-* Compliance.  List any security standards or sub-sections the project is
-  already documented as meeting (PCI-DSS, COBIT, ISO, GDPR, etc.).
+Not applicable.
 
 ## Secure development practices
 
