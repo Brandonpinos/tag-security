@@ -171,22 +171,63 @@ Not applicable.
 
 ## Secure development practices
 
-* Development Pipeline.  A description of the testing and assessment processes that
-  the software undergoes as it is developed and built. Be sure to include specific
-information such as if contributors are required to sign commits, if any container
-images immutable and signed, how many reviewers before merging, any automated checks for
-vulnerabilities, etc.
-* Communication Channels. Reference where you document how to reach your team or
-  describe in corresponding section.
-  * Internal. How do team members communicate with each other?
-  * Inbound. How do users or prospective users communicate with the team?
-  * Outbound. How do you communicate with your users? (e.g. flibble-announce@
-    mailing list)
-* Ecosystem. How does your software fit into the cloud native ecosystem?  (e.g.
-  Flibber is integrated with both Flocker and Noodles which covers
-virtualization for 80% of cloud users. So, our small number of "users" actually
-represents very wide usage across the ecosystem since every virtual instance uses
-Flibber encryption by default.)
+### Development Pipeline
+All Code is maintained in [Github](https://github.com/operator-framework) and changes are reviewed by maintainers
+* The Source Code is visible in the Github
+* Changes are submitted through Pull Requests
+* Pull Requests automatically have checks performed
+* Pull Requests are reviewed by maintainers
+* Merges are performed after passing checks and review by maintainer
+
+Operators employ several techniques that ensure their security and integrity
+* Operators follow the principle of least privilege, ensuring that they only access the necessary resources with the least amount of permissions
+* Operators use secure communication channels such as SSH between various components to prevent eavesdropping or mishandling of information
+* Operators should employ a Role Based Access System to ensure that only the authorized users and services are allowed to perform actions in the Operator's lifecycle
+* Operators are expected to use Kubernetes Secrets objects rather than hardcoding for sensitive data
+
+### Communication Channels
+
+**Internal**
+Team Members communicate with each other through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework) and through [Github issues](https://github.com/operator-framework/operator-sdk/issues).
+
+**Inbound**
+Users communicate with the project maintainers through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework), [Operator SDK Contributer Google Groups](https://groups.google.com/g/operator-framework-sdk-dev), [Operator OLM Contributer Google Groups](https://groups.google.com/g/operator-framework-olm-dev), through [Github issues](https://github.com/operator-framework/operator-sdk/issues), and the [#kubernetes-operators](https://kubernetes.slack.com/messages/kubernetes-operators] on the Kubernetes Slack.
+
+**Outbound**
+Team Members communicate with users through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework).
+
+### Ecosystem
+Operator Framework plays an integral part in the Cloud Native Ecosystem. They promote the development and automation of specialized Operators for complex services and applications. They enhance many of Kubernetes basic features and account for the shortcomings as well.
+
+They fulfill a special service of allowing for the development of Operators with familiar languages and libraries. This alone creates a large efficiency boost for the development team, which is increased even more when taking into the consideration the aforementioned automation aspects of Operator Framework.
+
+## Security issue resolution
+
+### Reporting a vulnerability
+Security Vulnerabilities are handled by the Red Hat Product Security and can be reported by sending a mail to secalert@redhat.com.
+
+The sent email will be read and acknowledged with a non-automated response within three working days. The security team requires several information like steps to reproduce, version number etc. which are available [here](https://access.redhat.com/security/team/contact).
+### Creating an issue
+Issues can be created at [opening an issue](https://github.com/operator-framework/operator-sdk/issues/new). More information about how to create an issue can be found [here](https://sdk.operatorframework.io/docs/contribution-guidelines/reporting-issues/).
+
+Issues are tracked [here](https://github.com/operator-framework/operator-sdk/issues).
+### Issue Lifecycle
+#### Triage Meetings
+Each week, there is a triage meeting to review new issues. Each issue that has been filed since the previous meeting is discussed, GitHub labels are applied, and the issue is added to a Milestone. Additionally, anyone can request that a previously triaged issue can be retriaged.
+#### Grooming 
+Following a release, there is a [grooming meeting](https://github.com/operator-framework/community#operator-sdk-grooming-meeting) to review issues that are desired in the next release. Issues are discussed in the following order:
+* Issues in the next release milestone
+* Issues labeled as priority/important-soon
+* Issues in other milestones/backlog if specifically requested
+
+### Operator SDK response team
+* Austin Macdonald (**[@asmacdo](https://github.com/asmacdo)**), Red Hat
+* Jonathan Berkhahn (**[@jberkhahn](https://github.com/jberkhahn)**), IBM
+* Ken Sipe (**[@kensipe](https://github.com/kensipe)**), Code Mentor
+* Varsha Prasad Narsing (**[@varshaprasad96](https://github.com/varshaprasad96)**), Red Hat
+
+The specific details about the timings of the meetings and communication channels are available [here](https://github.com/operator-framework/community#operator-sdk-working-group).
+
 
 ## Security issue resolution
 
