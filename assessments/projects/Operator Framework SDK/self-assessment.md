@@ -32,8 +32,6 @@ Express Learning course provided by Linux Foundation Training & Certification:
 
 ## Metadata
 
-A table at the top for quick reference information, later used for indexing.
-
 |   |  |
 | -- | -- |
 | Software | [Operator Framework](https://github.com/operator-framework/operator-sdk)  |
@@ -44,8 +42,6 @@ A table at the top for quick reference information, later used for indexing.
 
 ### Security links
 
-Provide the list of links to existing security documentation for the project. You may
-use the table below as an example:
 | Doc | url |
 | -- | -- |
 | Security file | https://github.com/operator-framework/operator-sdk/blob/master/SECURITY.md |
@@ -55,7 +51,8 @@ use the table below as an example:
 
 Operator Framework is an open-source toolkit that provides the runtime environment and software development kit (SDK) for building and running Kubernetes applications, dubbed “Operators”, in an effective and easily scalable way.
 
-The SDK is a framework that allows developers to build and manipulate Operators without prior knowledge of the complexities of Kubernetes API. By providing libraries and tools, developers can use familiar languages to streamline the process.
+Built on top of Kubernetes, OpenShift Operators use kubernetes as a framework to allow extensions to developers to build and manipulate Operators without prior knowledge of the complexities of Kubernetes API. By automating deployment, scale, updates and maintenance OpenShift uses operators to manage systems without the need of consistent human intervention. If interaction is necessary, OpenShift’s operators provide specialized libraries and tools to allow developers to use familiar languages to interact with operators in a simple way.
+
 
 ### Background
 
@@ -63,14 +60,14 @@ Streamlining processes for consumers, workers, and industries in general is ofte
 
 Containerization solves this problem. Containerization is the process of packaging an application with all its dependencies into a single, self-contained unit called a container. This would include the application code, source tools, runtime libraries, and more. By providing an isolated environment, this ensures that the application would be consistent in running on multiple different machines, regardless of the individual conditions. Containerization allows for ease of use, portability, scalability, and efficient deployment of applications.
 
-A developer team seeking to utilize these benefits for their application would find Kubernetes very helpful. Kubernetes is an open source containerization platform that automates application deployment, updates, and overall management. It provides the container infrastructure and allows developers to define their application requirements. These reasons alone with a host of other benefits would be a great help to any development team.
+Kubernetes is a control system that helps manage and run applications with multiple software components. An open source containerization platform, Kubernetes automates application deployment, updates, and overall management. It provides the container infrastructure and allows developers to define their application requirements. These reasons alone with a host of other benefits would be a great help to any development team.
 
-However, setting up and configuring Kubernetes clusters can pose a challenge for developers unfamiliar with Kubernetes. It requires an in-depth understanding of networking, infrastructure, and storage concepts. These are significant learning curves that create a “threshold filter” of sorts that leads developers to deciding on a different alternative to Kubernetes. 
+However, setting up and configuring Kubernetes clusters can pose a challenge for developers unfamiliar with its complexities. It requires an in-depth understanding of networking, infrastructure, and storage concepts. These are significant learning curves that create a “threshold filter” of sorts that leads developers to deciding on a different alternative to Kubernetes. 
 
-Operator Framework is a solution to this problem along with providing several benefits that Kubernetes does not natively supply. Operator Framework allows developers to build Operators with languages and libraries that they are already familiar with. Operators built with Operator Framework allow for even more options for automation of tasks and workflows beyond the basic functionalities provided by Kubernetes. Overall Operator Framework complements the benefits that Kubernetes offers by providing the specialized tools for easier learning for developers, better automation, and better scalability making Kubernetes an easier and more powerful tool.
+Red Hat's OpenShift which utilizes an Operator Framework is a solution to this problem along with providing several benefits that Kubernetes does not natively supply. The Operator Framework allows developers to build Operators with languages and libraries that they are already familiar with. Operators built with Operator Framework allow for even more options for automation of tasks and workflows beyond the basic functionalities provided by Kubernetes. Overall Operator Framework complements the benefits that Kubernetes offers by providing the specialized tools for easier learning for developers, better automation, and better scalability making Kubernetes an easier and more powerful tool.
 
 ### Actors
-Operator Framework is comprised of a few different parts including
+Operator Framework is comprised of the following parts 
 
 #### Operator Framework SDK
 The framework used to build and package Operators. Using Operator SDK allows developers to easily automate and manage any Operators they create. It constructs basic manifests such as the CRD, RBAC, Dockerfile­, and the primary file "main.go", and offers some sample illustrations. The user interacts with the Operator SDK through a command line interface (CLI) to create, test, and build operators and manage the Operator Life Cycle Manager (OLM) installation in the cluster.
@@ -79,7 +76,7 @@ The framework used to build and package Operators. Using Operator SDK allows dev
 Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. Operator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub. 
 
 #### Operator Registry
-The Operator Registry is essentially a gRPC API that provides the OLM with operator bundle data, allowing querying of these operator bundles. It provides several binaries, including ```opm```(which updates registry databases and the index images), ```initializer```(which takes operator manifests as inputs and outputs SQLite database with the data allowing querying), and many more.
+The Operator Registry is a gRPC API that provides the OLM with operator bundle data, allowing querying of these operator bundles. It provides several binaries, including ```opm```( updates registry databases and the index images), ```initializer```( takes operator manifests as inputs and outputs SQLite database with the data allowing querying), and many more.
 
 #### Operator Hub
 A community-driven public hub for sharing and discovering Operators for various uses.
@@ -118,13 +115,13 @@ Catalog Operator
 
 
 ### Goals
-The goals of Operator Framework are mainly to simplify and enhance applications  on Kubernetes clusters. 
+The goals of Operator Framework is to simplify and enhance applications on Kubernetes clusters. 
 
-It does this by using the Operator SDK to simplify creation and automation of Operators. This thoroughly increases developer productivity.
+It does this by using the Operator Software Development Kits (SDK) to simplify creation and automation of Operators. This thoroughly increases developer productivity.
 
-Operator Framework also enhances the reliability of complex applications by allowing them to declare specific configurations to make sure the application is always running as desired. This would in turn reduce possible downtime and making it easier for the responsible department.
+Operator Framework also enhances the reliability of complex applications by allowing them to declare specific configurations to make sure the application is always running as desired. This would in turn reduce possible downtime and making it easier for the maintaining ditributed dependent systems.
 
-For security guarantees, Operator Framework uses the same principles as Kubernetes such as Role-Based Access Control so that applications cannot act outside of the scope provided. This along with other network isolation policies ensures the security aspect. 
+For security guarantees, Operator Framework uses the same principles as Kubernetes such as Role-Based Access Control so that applications cannot act outside of the scope provided. This along with other network isolation policies maintains enterprise providing a product that is secure, stable, tested for capacity with increased usability.
 
 ### Non-goals
 Although Operator Framework enhances many basic features of Kubernetes, as a result it also shares some of the same non-goals. The logging and monitoring, although provided, are basic as they are not meant to be a replacement for fully comprehensive security logging and monitoring alternatives.
@@ -135,35 +132,33 @@ They also do not cover every aspect of deployment of applications. They mainly f
 
 This self-assessment is created by the Security Pals team to perform an internal analysis of the
 OpenShift Operator Framework's security.  It is not intended to provide a security audit of Operator Framework, or
-function as an independent assessment or attestation of Operator Framework's security health.
+function as an independent assessment or attestment of Operator Framework's security health.
 
-This document serves to provide Operator Framework users with an initial understanding of
-OpenShifts's security, where to find existing security documentation, Operator Framework plans for
-security, and general overview of Operator Framework security practices, both for development of
-Operator Framework as well as security of Operator Framework.
+This document serves to provide Operator Framework users with an brief and easily understandable description of OpenShifts's security. Defines where to find existing security documentation. Clearly explains Operator Framework plans for security. Lays out general overview of Operator Framework security practices both for development of Operator Framework as well as security of Operator Framework.
 
 This document provides the CNCF TAG-Security with an initial understanding of OpenShift
 to assist in a joint-assessment, necessary for projects under incubation.  Taken
 together, this document and the joint-assessment serve as a cornerstone for if and when
 Operator Framework seeks graduation and is preparing for a security audit.
 
+
 ## Security functions and features
+
+By focusing on the following security-relevant components and features, the OpenShift Operator Framework maintains a robust security posture, reducing potential vulnerabilities and threats to the platform on Kubernetes environments.
 
 | Component | Applicability | Description of Importance |
 | --------- | ------------- | ------------------------- |
 | Operator SDK | Critical | Ensures the integrity and security of the underlying logic by restricting user modifications. Performs validation checks on the Operator's code, bundle, and catalog to prevent unauthorized changes and uphold the security posture of the Operator. |
-| Operator Lifecycle Manager (OLM) | Critical | Enables users to specify desired states without direct intervention in OLM reconciliation logic. This separation of concerns enhances security by reducing the risk of user errors or malicious attempts to interfere with the reconciliation process.| 
+| Operator Lifecycle Manager (OLM) | Critical | Enables users to specify desired states without direct intervention in OLM resolution logic. This separation of concerns enhances security by reducing the risk of user errors or malicious attempts to interfere with the reconciliation process.| 
 | Operator Registry | Relevant | Automates the generation of manifests and indexes while restricting user access to modification of critical manifest generation/indexing logic. Implements validation checks on Operator bundles, ensuring error-free installations/updates and bolstering overall security. | 
 
 
-### Security Relevant
-By focusing on the following security-relevant components and features, the OpenShift Operator Framework maintains a robust security posture, reducing potential vulnerabilities and threats to the platform on Kubernetes environments.
-
-Deployment Configurations and Settings: Allowing limited access and control over critical components like Operator logic, YAML configurations, and plugin communication significantly fortifies the security posture of the system. Threat modeling should include potential attacks on communication channels, unauthorized access to sensitive data in YAML configurations, and attempts to tamper with Operator logic or registry contents.
-
-Access Controls and Validation Checks: Enforcing strict access controls and robust validation mechanisms at various stages (such as Operator installation, updates, and reconciliation) is paramount. This prevents malicious actors from bypassing security checks and ensures the system's integrity throughout its lifecycle.
-
-Data Encryption and Masking: Implementing encryption and masking techniques for sensitive information within YAML configurations is essential. This shields critical data from unauthorized access or exposure, contributing to the overall security resilience of the system.
+### Security Measures for OpenShift Operator Framework
+| Security Aspect | Importance | Description of Importance |
+| --------------- | ---------- | ------------------------- |
+| Depolyment Configurations and Settings | High | Limited access to critical components fortifies security. Threat modeling includes potential attacks on communication channels, unauthorized data access, and tampering attempts with Operator logic or registry contents.|
+| Access Controls and Validation Checks | High | Enforcing strict access controls and robust validation mechanisms prevents bypassing security checks and maintains integrity during the system's lifecycle. |
+| Data Encryption and Masking | High |  Implementing encryption and masking for sensitive information safeguards data from unauthorized access, bolstering overall system security. |
 
 ## Project compliance
 
@@ -191,7 +186,7 @@ Operators employ several techniques that ensure their security and integrity
 Team Members communicate with each other through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework) and through [Github issues](https://github.com/operator-framework/operator-sdk/issues).
 
 **Inbound**
-Users communicate with the project maintainers through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework), [Operator SDK Contributer Google Groups](https://groups.google.com/g/operator-framework-sdk-dev), [Operator OLM Contributer Google Groups](https://groups.google.com/g/operator-framework-olm-dev), through [Github issues](https://github.com/operator-framework/operator-sdk/issues), and the [#kubernetes-operators](https://kubernetes.slack.com/messages/kubernetes-operators] on the Kubernetes Slack.
+Users communicate with the project maintainers through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework), [Operator SDK Contributer Google Groups](https://groups.google.com/g/operator-framework-sdk-dev), [Operator OLM Contributer Google Groups](https://groups.google.com/g/operator-framework-olm-dev), through [Github issues](https://github.com/operator-framework/operator-sdk/issues), and the [#kubernetes-operators](https://kubernetes.slack.com/messages/kubernetes-operators) on the Kubernetes Slack.
 
 **Outbound**
 Team Members communicate with users through [Operator Framework Google Groups](https://groups.google.com/g/operator-framework).
@@ -231,24 +226,18 @@ The specific details about the timings of the meetings and communication channel
 
 ## Appendix
 
-
 ### Known Issues Over Time
 
-All reported bugs, issues, and fixes can be viewed from [operator-framework/operator-sdk/issues repository](https://github.com/operator-framework/operator-sdk/issues). However, there is no designated label for all security related issues.
+All reported bugs, issues, and fixes can be viewed from [operator-framework/operator-sdk/issues repository](https://github.com/operator-framework/operator-sdk/issues). Security vulnerabilities are usually assigned a CVE number to them. All security issues can be tracked [here](https://github.com/operator-framework/operator-sdk/issues?q=CVE+in%3Atitle)
 
-Examples of some known issues include:
-- **Operator-sdk run bundle failed registry pod due to missing root schema field [#6584](https://github.com/operator-framework/operator-sdk/issues/6584)** This is a case where the user tried to run ``` operator-sdk run bundle quay.io/henry_h_li/common-service-operator-bundle:a9101de0-dirty --install-mode OwnNamespace ``` but the registry pod was stuck in a crash loop. 
+Examples of some known security issues include:
+- **upgrade mongo-go-driver for CVE-2021-20329 [#6450](https://github.com/operator-framework/operator-sdk/issues/6450)** This is a case where the operator-sdk was using a version of mongo-go-driver in which a vulnerability was found
 
--  **Controller fails on empty manifest files from a Helm Chart [#2622](https://github.com/operator-framework/operator-sdk/issues/2622)** This is a case where the user tries to reconcile an empty manifest file, and expects the controller to simply ignore the empty resources.
+- **CVE-2022-23648 CVE-2022-31030 github.com/containerd/containerd package [#6143](https://github.com/operator-framework/operator-sdk/issues/6143)** A security vuilnerability was found after a vulnerability scan on the Helm operator
 
-- **operator-sdk run bundle giving ```FATA[0120] Failed to run bundle: error waiting for CSV to install: timed out waiting for the condition``` [#6432](https://github.com/operator-framework/operator-sdk/issues/6432)**
-This is a case where the user tried to bundle a working operator and run it, but the bundle times out. 
+- **Possible CVEs in openssl-libs found in quay.io/operator-framework/ansible-operator:v1.5.0 [#4755](https://github.com/operator-framework/operator-sdk/issues/4755)** Scan on ansible-operator image using [Trivy](https://github.com/aquasecurity/trivy/) revealed vulnerabilities in the openssl-libs package
 
-
--  **CustomResourceDefinition is invalid at kubernetes 1.18 [#3235](https://github.com/operator-framework/operator-sdk/issues/3235)** when trying to add init containers. The CRDs generated by Operator-SDK runs into an error when running ```kubectl apply```.
-
-- **Generate bundle ignore RelatedImages from config/manifests/bases [#6590](https://github.com/operator-framework/operator-sdk/issues/6590)**
-This is an issue where the generated CSV does not include the provided ```RelatedImages``` in v1.19.1. It used to work with v1.19.0.
+- **CVE-2018-1098 found with operator-sdk v1.0 transitive dependencies [#4198](https://github.com/operator-framework/operator-sdk/issues/4198)** This CVE was caused by using a vulnerable version of Cobra and Viper in the operator-sdk
 
 ### CII Best Practices
 
@@ -256,23 +245,23 @@ The project has [not been documented](https://www.bestpractices.dev/en/projects)
 
 ### Case Studies
 
-In this section, we evaluate how the Prometheus (optional) and etcd (core) operators leverage the functionalities of the Operator Framework:
+The problem with finding specific case studies is that it is usually not *explicitly* documented when the project is built by the operator framework. Hence, we look at the applicability of the features provided by the operator framework through the lens of Prometheus and etcd operators:
 
-- #### Custom Resource Definitions (CRDs)
-  The Operator Framework can be leveraged to define custom APIs that are used to control the behaviour of the operators. The Prometheus Operator uses this feature to define eight CRDs–for example, Prometheus, Alertmanager, and ServiceMonitor among others–which allow users to specify the desired monitoring stack state. The etcd Operator on the other hand leverages this feature to create three CRDs–EtcdBackup, EtcdRestore, and EtcdCluster–to allow users to specify the desired state (size, version, backup policies and restore source) of the etcd clusters.
+- The primary application of this framework is often the creation of **custom resources**. The necessity of this feature is evidenced by the following examples:
+    - The Prometheus Operator defines eight CRDs–for example, Prometheus, Alertmanager, and ServiceMonitor among others–which allow users to specify the desired monitoring stack state.
+  - The etcd Operator on the other hand creates three CRDs–EtcdBackup, EtcdRestore, and EtcdCluster–to allow users to specify the desired state (size, version, backup policies and restore source) of the etcd clusters.
+
+-   The Operator Framework also provides libraries and tools to streamline the implementation of the **operator's reconciliation logic**, i.e., define custom controllers for operands. This is evidenced by the etcd operator for example, which defines custom controllers for each of it's three CRDs.
+
+- The **Operator Lifecycle Manager (OLM)** provides the means to bundle, distribute, and manage the operator and its dependencies. The likely use case for this is very intuitive:
+    - An update of the etcd version is rolled out.
+    - The OLM checks the CatalogSource and sees that a new ClusterServiceVersion (CSV) is available compared to the current installation.
+    - The OLM schedules an upgrade in a way that does not cause data loss, according to the reconciliation logic provided by the etcd maintainers.
 
 
-- #### Controller Reconciliation Logic
-  The Operator Framework also provides libraries and tools to streamline the implementation of the operator's reconciliation logic. The Prometheus Operator leverages this to define three separate controllers for three Operands: Prometheus, Alertmaanager, and Thanos, while the etcd operator defines separate controllers for all of its operands. These controllers monitor changes to the desired state of the CRDs and update it accordingly.
-
-- #### Operator Lifecycle Manager
-
-
-
-Source: *The Kubernetes Operator Framework Book* By : Michael Dame
-Chapter 10: Case Study for Optional Opera
-Chapter 11: Case Study for Core Operator – Etcd Operator
-
+```
+Dame, M. (2022). The Kubernetes Operator Framework Book. Packt Publishing. (Chapter 10: Case Study for Optional Operator - Prometheus Operator; Chapter 11: Case Study for Core Operator – Etcd Operator)
+```
 
 ### Related Projects
 
@@ -286,62 +275,58 @@ Chapter 11: Case Study for Core Operator – Etcd Operator
 
 ### Threat Modeling With STRIDE
 
+STRIDE-based threat model outlines potential threats and recommended mitigations for security considerations within the OpenShift Operator Framework for Kubernetes projects. 
+
 ##### Threat-01-S - Spoofing of OpenShift Operator Framework Admin
-* Description: Identity of the OpenShift Operator Framework Admin can be spoofed due to stolen credentials or lack of authentication.
+* Description: The identity of the OpenShift Operator Framework Admin can be spoofed due to stolen credentials or lack of authentication.
 * Mitigations:
 Implement authentication for OpenShift Operator Framework Admin before processing requests.
 Discard and log as a security event if authentication fails.
 
 ##### Threat-02-S - Spoofing of OpenShift Operator Framework API-Server
-* Description: A user could potentially interfere with a worker cluster and impersonate as the OpenShift Operator Framework API-Server, gaining unauthorized access.
+* Description: A user could potentially interfere with a working cluster and impersonate as the OpenShift Operator Framework API-Server, gaining unauthorized access.
 * Mitigations:
-Authenticate OpenShift Operator Framework API-Server and worker clusters before processing requests.
+Authenticate OpenShift Operator Framework API-Server and working clusters before processing requests.
 Discard and log as a security event if authentication fails.
 Tampering
 
 ##### Threat-03-T - Tampering of OpenShift Operator Framework Components
 * Description: Operator Framework components and configuration files can be tampered during build, installation, or runtime.
 * Mitigations:
-Verify checksum and signature during build and installation.
+Verify checksum value and signature during build and installation.
 Alert and log on modification of components to detect tampering.
 
 ##### Threat-04-T - Tampering of Communication to Worker Cluster
 * Description: Communication from Control Plane to Worker Cluster can be tampered during transit, allowing unauthorized modifications.
 * Mitigations:
 Verify integrity of commands received before processing.
-Discard and log as a security event if integrity check fails.
-Repudiation
+Discard and log as a security event if integrity check fails. Rejection of access. 
 
 ##### Threat-05-R - Repudiation of Admin Actions
 * Description: Actions performed by OpenShift Operator Framework Admin should be detectable and logged for auditing purposes.
 * Mitigations:
 Implement auditing to log all actions performed by the Admin.
 Implement centralized audit collection for suspicious activities.
-Information Disclosure
+Tracking Information Disclosure
 
 ##### Threat-06-I - Exposure of Communication between Control Plane and Worker Cluster
 * Description: Snooping of communication exposes sensitive information between Control Plane and Worker Cluster.
 * Mitigations:
 Encrypt sensitive information during communication.
-Denial of Service
 
 ##### Threat-07-D - Exhausting Cloud Resources
 * Description: Incessant requests within the network can make Worker Cluster unavailable.
 * Mitigations:
 Isolate the network of the OpenShift Operator Framework environment.
-Isolate Worker Cluster from users.
-Elevation of Privilege
+Isolate Worker Cluster from users by elevation of privilege
 
 ##### Threat-08-E - Elevating Access to Control Plane via Worker Cluster
 * Description: Compromising a Worker Cluster can potentially allow access to the Control Plane.
 * Mitigations:
-Implement separation of privileges between Control Plane and Worker Cluster.
+Implement separation of privileges between Control Plane and working Cluster.
 
 ##### Threat-09-E - Elevation of Access via Create Cluster Permission
 * Description: Create Cluster permissions could lead to unauthorized elevated access.
 * Mitigations:
-Limit permissions for creating pods.
-Implement Cluster-level Pod Security to prevent unauthorized access.
+Limit permissions for creating pods and pod security to prevent unauthorized access. 
 
-
-This STRIDE-based threat model outlines potential threats and recommended mitigations for security considerations within the OpenShift Operator Framework in Kubernetes projects. Adjustments can be made based on the specific architecture and implementation details of the OpenShift Operator Framework in use.
