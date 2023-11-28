@@ -149,15 +149,21 @@ Operator Framework seeks graduation and is preparing for a security audit.
 
 ## Security functions and features
 
-* Critical.  A listing critical security components of the project with a brief
-description of their importance.  It is recommended these be used for threat modeling.
-These are considered critical design elements that make the product itself secure and
-are not configurable.  Projects are encouraged to track these as primary impact items
-for changes to the project.
-* Security Relevant.  A listing of security relevant components of the project with
-  brief description.  These are considered important to enhance the overall security of
-the project, such as deployment configurations, settings, etc.  These should also be
-included in threat modeling.
+| Component | Applicability | Description of Importance |
+| --------- | ------------- | ------------------------- |
+| Operator SDK | Critical | Ensures the integrity and security of the underlying logic by restricting user modifications. Performs validation checks on the Operator's code, bundle, and catalog to prevent unauthorized changes and uphold the security posture of the Operator. |
+| Operator Lifecycle Manager (OLM) | Critical | Enables users to specify desired states without direct intervention in OLM reconciliation logic. This separation of concerns enhances security by reducing the risk of user errors or malicious attempts to interfere with the reconciliation process.| 
+| Operator Registry | Relevant | Automates the generation of manifests and indexes while restricting user access to modification of critical manifest generation/indexing logic. Implements validation checks on Operator bundles, ensuring error-free installations/updates and bolstering overall security. | 
+
+
+### Security Relevant
+By focusing on the following security-relevant components and features, the OpenShift Operator Framework maintains a robust security posture, reducing potential vulnerabilities and threats to the platform on Kubernetes environments.
+
+Deployment Configurations and Settings: Allowing limited access and control over critical components like Operator logic, YAML configurations, and plugin communication significantly fortifies the security posture of the system. Threat modeling should include potential attacks on communication channels, unauthorized access to sensitive data in YAML configurations, and attempts to tamper with Operator logic or registry contents.
+
+Access Controls and Validation Checks: Enforcing strict access controls and robust validation mechanisms at various stages (such as Operator installation, updates, and reconciliation) is paramount. This prevents malicious actors from bypassing security checks and ensures the system's integrity throughout its lifecycle.
+
+Data Encryption and Masking: Implementing encryption and masking techniques for sensitive information within YAML configurations is essential. This shields critical data from unauthorized access or exposure, contributing to the overall security resilience of the system.
 
 ## Project compliance
 
