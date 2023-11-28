@@ -27,6 +27,8 @@ Express Learning course provided by Linux Foundation Training & Certification:
 * [Secure development practices](#secure-development-practices)
 * [Security issue resolution](#security-issue-resolution)
 * [Appendix](#appendix)
+* [Threat Modeling With STRIDE](#Threat-Modeling-With-STRIDE)
+
 
 ## Metadata
 
@@ -37,7 +39,7 @@ A table at the top for quick reference information, later used for indexing.
 | Software | [Operator Framework](https://github.com/operator-framework/operator-sdk)  |
 | Security Provider | No  |
 | Languages | Go, Ansible, Python, C++ |
-| SBOM | [git](https://git-scm.com/downloads), [go.mod](https://github.com/operator-framework/operator-sdk/blob/master/go.mod), [go.sum](https://github.com/operator-framework/operator-sdk/blob/master/go.sum), [Kubernetes](https://github.com/kubernetes/kubernetes), |
+| SBOM | [git](https://git-scm.com/downloads), [go.mod](https://github.com/operator-framework/operator-sdk/blob/master/go.mod), [go.sum](https://github.com/operator-framework/operator-sdk/blob/master/go.sum), [Kubernetes](https://github.com/kubernetes/kubernetes) |
 | | |
 
 ### Security links
@@ -57,9 +59,9 @@ The SDK is a framework that allows developers to build and manipulate Operators 
 
 ### Background
 
-Streamlining processes for consumers, workers, and industries in general is often of utmost importance. It saves time, money, and headaches for everyone involved. When it comes to installing a piece of software, most expect it to be simple with only a few clicks involved, the same applies to updates and upgrades for that software. However every machine is different and each application has numerous dependencies that are necessary to run it correctly.To expect consumers or people who are not as proficient with technology to install the correct one from slightly different variations would be nonsensical.
+Streamlining processes for consumers, workers, and industries in general is often of utmost importance. It saves time, money, and headaches for everyone involved. When it comes to installing a piece of software, most expect it to be simple with only a few clicks involved, the same applies to updates and upgrades for that software. However every machine is different and each application has numerous dependencies that are necessary to run it correctly. To expect consumers or people who are not as proficient with technology to install the correct one from slightly different variations would be nonsensical.
 
-Containerization solves this problem. Containerization is the process of packaging an application with all its dependencies into a single, self-contained unit called a container. This would include the application code, source tools, runtime libraries, and more. By providing an isolated environment, this ensures that the application would be consistent in running on multiple different machines, regardless of the individual conditions.Containerization allows for ease of use, portability, scalability, and efficient deployment of applications.
+Containerization solves this problem. Containerization is the process of packaging an application with all its dependencies into a single, self-contained unit called a container. This would include the application code, source tools, runtime libraries, and more. By providing an isolated environment, this ensures that the application would be consistent in running on multiple different machines, regardless of the individual conditions. Containerization allows for ease of use, portability, scalability, and efficient deployment of applications.
 
 A developer team seeking to utilize these benefits for their application would find Kubernetes very helpful. Kubernetes is an open source containerization platform that automates application deployment, updates, and overall management. It provides the container infrastructure and allows developers to define their application requirements. These reasons alone with a host of other benefits would be a great help to any development team.
 
@@ -68,49 +70,59 @@ However, setting up and configuring Kubernetes clusters can pose a challenge for
 Operator Framework is a solution to this problem along with providing several benefits that Kubernetes does not natively supply. Operator Framework allows developers to build Operators with languages and libraries that they are already familiar with. Operators built with Operator Framework allow for even more options for automation of tasks and workflows beyond the basic functionalities provided by Kubernetes. Overall Operator Framework complements the benefits that Kubernetes offers by providing the specialized tools for easier learning for developers, better automation, and better scalability making Kubernetes an easier and more powerful tool.
 
 ### Actors
-Operator Framework is comprised of a few different parts including, 
+Operator Framework is comprised of a few different parts including
 
-Operator Framework SDK : The framework used to build and package Operators. Using Operator SDK allows developers to easily automate and manage any Operators they create.
+#### Operator Framework SDK
+The framework used to build and package Operators. Using Operator SDK allows developers to easily automate and manage any Operators they create. It constructs basic manifests such as the CRD, RBAC, Dockerfile­, and the primary file "main.go", and offers some sample illustrations. The user interacts with the Operator SDK through a command line interface (CLI) to create, test, and build operators and manage the Operator Life Cycle Manager (OLM) installation in the cluster.
 
-Operator Lifecycle Manager (OLM) : Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. Operator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub.
+#### Operator Lifecycle Manager (OLM) 
+Contains two parts, Operator OLM and Catalog Operator. Both provides the runtime environment and APIs for managing the lifecycle of Operators and their resources. It also helps in deploying, installing, and updating Operators. Operator OLM is for manually created Operators and Catalog Operator is for Operators taken from Operater Hub. 
 
-Operator Hub : A community-driven public hub for sharing and discovering Operators for various uses.
+#### Operator Registry
+The Operator Registry is essentially a gRPC API that provides the OLM with operator bundle data, allowing querying of these operator bundles. It provides several binaries, including ```opm```(which updates registry databases and the index images), ```initializer```(which takes operator manifests as inputs and outputs SQLite database with the data allowing querying), and many more.
+
+#### Operator Hub
+A community-driven public hub for sharing and discovering Operators for various uses.
 
 These components make up Operator Framework and make it very useful for developing, deploying and managing Operators.
 
-
 ### Actions
-Creating an Operator using Operator Framework SDK:
-1. Create new project operator using the SDK Command Line Interface
-2. Define resource APis by adding Custom Resource Definitions
+
+#### Creating an Operator using Operator Framework SDK
+1. Create new project operator using the SDK Command Line Interface (CLI)
+2. Define resource APIs by adding Custom Resource Definitions
 3. Define controllers
 4. Write reconciling logic for controllers using SDK and APIs
-5. Use the SDK Command Line Interface to generate the operator deployment manifests
+5. Using the SDK CLI, define webhooks for the custom resource, e.g., validating/mutating webhooks if necessary
+6. Use the SDK Command Line Interface to generate the operator deployment manifest
 
-Installing and Managing an Operator using Operator Framework Operator Lifecycle Manage (OLM):
+#### Installing and Managing an Operator using Operator Framework Operator Lifecycle Manage (OLM)
 1. Use Operator OLM to manually create Operator
   OR
 1. Use Catalog Operator to create Operator from OperaterHub
 
 Operator OLM
-1. Watches for the ClusterServiceVersion (CSV) in a namspace and checks to make sure the requirements are met
-2. If requirements are met, the install strategy is ran
+1. Watches for the ClusterServiceVersion (CSV) in a namespace and checks to make sure the requirements are met
+2. If requirements are met, the install strategy is executed
 
 Catalog Operator
-1. Holds a cache of CSVs and CRDs.
+1. Holds a cache of CSVs and CRDs
 2. Watches for InstallPlans set by user
-3. If one is found, finds the matching name and adds as a resource, else 7b
+3. If one is found, finds the matching name and adds as a resource, else go to step 7
 4. For each managed CRD, adds as a resolved resource
 5. For each resolved CRD, finds the managing CSV
 6. Watches for resolved InstallPlans and creates resources for them
 7. Watches for subscriptions to Operators in Catalog, and creates InstallPlans for them
+
+![image](https://github.com/Brandonpinos/SecurityPals-Operator-Framework/assets/71077398/2c3c208e-db2a-4c88-b8db-02df8f344637)
+
 
 ### Goals
 The goals of Operator Framework are mainly to simplify and enhance applications  on Kubernetes clusters. 
 
 It does this by using the Operator SDK to simplify creation and automation of Operators. This thoroughly increases developer productivity.
 
-Operator Framework also enhances the reliability of complex applications by allowing them to declare specific configurations to make sure the application is always running as desired. This would in turn reduce possible downtime and making it easier for the responsible department
+Operator Framework also enhances the reliability of complex applications by allowing them to declare specific configurations to make sure the application is always running as desired. This would in turn reduce possible downtime and making it easier for the responsible department.
 
 For security guarantees, Operator Framework uses the same principles as Kubernetes such as Role-Based Access Control so that applications cannot act outside of the scope provided. This along with other network isolation policies ensures the security aspect. 
 
