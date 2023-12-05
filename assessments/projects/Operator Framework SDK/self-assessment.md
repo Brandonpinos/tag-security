@@ -188,7 +188,9 @@ Operators employ several techniques that ensure their security and integrity, mo
 * Avoiding granting root privileges
 * Configuring security contexts and monitoring logging
 
-Outside libraries and dependencies are security ensured through the help of users opening issues and communitity keeping them updated. Further information can be found in [best practices](https://sdk.operatorframework.io/docs/best-practices/)
+Further information about best practices can be found in [here](https://sdk.operatorframework.io/docs/best-practices/)
+
+The security of external libraries and dependencies are ensured and monitored with the help of dependabot. Through the help of users opening issues and communitity keeping the dependencies updated. Dependabot automatically tracks and identifies outdated or vulnerable dependencies and is integrated into many platforms such as github. 
 
 ### Communication Channels
 
